@@ -37,10 +37,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class PlayersControllerTest {
 
-    static {
-        System.setProperty("players.path", "sources/players_test.csv");
-    }
-
     @Autowired
     private MockMvc mockMvc;
     private final JsonMapper mapper = new JsonMapper();
@@ -48,7 +44,10 @@ public class PlayersControllerTest {
     @Test
     public void getPlayers() throws Exception {
         String expectedResponse = getExpectedResponseStr("all_players_response.json");
-        this.mockMvc.perform(get("/api/players"))
+        this.mockMvc.perform(
+                get("/api/players")
+                        .queryParam("pageNumber", "1")
+                        .queryParam("pageSize", "3"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedResponse));

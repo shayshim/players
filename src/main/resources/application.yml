@@ -5,5 +5,13 @@ spring:
   h2:
     console.enabled: true
   jpa:
-    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.H2Dialect
     defer-datasource-initialization: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
+#    default:
+#      properties:
+#        hibernate:
+#          physical_naming_strategy: "io.micronaut.data.hibernate.naming.DefaultPhysicalNamingStrategy"

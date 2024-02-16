@@ -1,5 +1,6 @@
 package com.players.repository.moel;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "player")
 public class Player {
     @Id
-    @Column(name = "playerID")
+    @Column
     private String playerID;
     @Column
     private String birthYear;
@@ -56,6 +57,7 @@ public class Player {
     private String height;
     @Column
     private String bats;
+    @JsonProperty(value = "throws")
     @Column(name = "throws")
     private String throwz;
     @Column
